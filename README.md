@@ -39,8 +39,9 @@
     </p>
 </p>
 
+Codex has been deprecated by OpenAI. I have updated the API call to ChatGPT 3.5 to make this script functional. I appreciate the effort in creating the original script.
 
-**Newer Version available**  (`pip install kiera`)
+**Commericial Version available**  (`pip install kiera`)
 
 [More Info](https://kiera.ai)
 

@@ -61,7 +61,14 @@ buffer = sys.stdin.read()
 prompt_prefix = '#!/bin/zsh\n\n' + buffer[:cursor_position_char]
 prompt_suffix = buffer[cursor_position_char:]
 
-response = openai.Completion.create(engine='code-davinci-002', prompt=prompt_prefix, suffix=prompt_suffix, temperature=0.5, max_tokens=50, stream=STREAM)
+#response = openai.Completion.create(engine='code-davinci-002', prompt=prompt_prefix, suffix=prompt_suffix, temperature=0.5, max_tokens=50, stream=STREAM)
+response = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+        {"role": "user", "content": prompt_prefix}
+    ]
+)
+
 
 if STREAM:
     while True:
@@ -71,16 +78,18 @@ if STREAM:
         completion = next_response['choices'][0]['text']
         print("completion:", completion)
 else:
-    completion_all = response['choices'][0]['text']
-    completion_list = completion_all.split('\n')
-    if completion_all[:2] == '\n\n':
-        print(completion_all)
-    elif completion_list[0]:
-        print(completion_list[0])
-    elif len(completion_list) == 1:
-        print('')
-    else:
-        print('\n' + completion_list[1])
+    completion_all = response['choices'][0]['message']['content']
+    if len(completion_all) > 0:
+         print('\n' + completion_all)
+    #completion_list = completion_all.split('\n')
+    #if completion_all[:2] == '\n\n':
+    #    print(completion_all)
+    #elif completion_list[0]:
+    #    print(completion_list[0])
+    #elif len(completion_list) == 1:
+    #    print('')
+    #else:
+    #    print('\n' + completion_list[1])
 
 
 
