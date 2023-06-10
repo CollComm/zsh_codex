@@ -39,9 +39,12 @@
     </p>
 </p>
 
-Codex has been deprecated by OpenAI. I have updated the API call to ChatGPT 3.5 to make this script functional. I appreciate the effort in creating the original script.
+## About this fork
+**Codex has been deprecated by OpenAI.**
+This fork has updated the API call to ChatGPT 3.5, which makes this script functional. I appreciate the effort that went into creating the original script, and I have preserved the information about Tom Dörr below.
 
-**Commericial Version available**  (`pip install kiera`)
+## Commericial Version available
+`pip install kiera`
 
 [More Info](https://kiera.ai)
 
